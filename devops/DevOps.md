@@ -11,23 +11,14 @@ The Software Development Lifecycle (SDLC) is a framework that defines the proces
 ### Stages
 
 1. **Plan:** In this initial stage, the project goals, scope, purpose, and feasibility are determined. This involves gathering requirements from stakeholders and creating a high-level plan for the project.
-
 2. **Code:** This stage involves the actual development of the software. Developers write code to create the application according to the specifications and requirements gathered in the planning stage.
-
 3. **Build:** The build stage involves compiling the source code into binary code, packaging the binaries, and creating executable files for deployment. This stage ensures that the code is properly integrated and ready for testing.
-
 4. **Test:** In this stage, the built software is tested to identify bugs and verify that it meets the required standards and specifications. Automated tests, such as unit tests, integration tests, and system tests, are often used to ensure the software is robust and reliable.
-
 5. **Release:** After successful testing, the software is prepared for release. This includes finalizing the version, creating release notes, and ensuring all necessary documentation is complete.
-
 6. **Deploy:** The software is deployed to the production environment where it will be used by end-users. This stage involves configuration management, environment setup, and ensuring the deployment process is smooth and error-free.
-
 7. **Operate:** Once deployed, the software is operated in the production environment. This includes monitoring its performance, maintaining its availability, and ensuring it functions as expected.
-
 8. **Monitor:** Continuous monitoring of the software in the production environment is crucial to identify issues, ensure performance, and gather data for future improvements. Monitoring tools are used to track the application's performance, user behavior, and any errors that occur.
-
 9. **Feedback:** Gathering feedback from end-users and stakeholders is crucial for continuous improvement. This feedback loop informs future development and operational decisions, helping to refine and enhance the software.
-
 10. **Continuous Improvement:** The insights and lessons learned from the monitoring and feedback stages are used to make iterative improvements to the software and processes. This involves refining the development and operational practices to enhance efficiency and quality.
 
 ## CI/CD
