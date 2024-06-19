@@ -282,7 +282,7 @@ spec:
 
 ## Exercises
 
-1. Write a Kubernetes manifest file to create a Pod running a Nginx container.
+1. Write a Kubernetes manifest file to create a Pod running a Nginx container:
 
 ```yaml
 apiVersion: v1
@@ -297,7 +297,7 @@ spec:
             - containerPort: 80
 ```
 
-2. Write a Kubernetes deployment manifest to manage a set of replicas of the Nginx Pod.
+2. Write a Kubernetes deployment manifest to manage a set of replicas of the Nginx Pod:
 
 ```yaml
 apiVersion: apps/v1
