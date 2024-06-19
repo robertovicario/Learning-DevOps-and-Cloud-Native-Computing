@@ -12,8 +12,9 @@ A Kubernetes cluster consists of a set of worker machines, called nodes, that ru
 
 Kubernetes architecture is composed of the following main components:
 
-- Control Plane: The control plane manages the Kubernetes cluster. It is responsible for maintaining the desired state of the cluster, such as which applications are running and which container images they use. The control plane components include the API server, scheduler, controller manager, and etcd.
-- Nodes: Nodes are the machines (either virtual or physical) that run containerized applications. Each node contains the necessary services to run Pods, including the container runtime, kubelet, and kube-proxy.
+- **Control Plane:** The control plane manages the Kubernetes cluster. It is responsible for maintaining the desired state of the cluster, such as which applications are running and which container images they use. The control plane components include the API server, scheduler, controller manager, and etcd.
+
+- **Nodes:** Nodes are the machines (either virtual or physical) that run containerized applications. Each node contains the necessary services to run Pods, including the container runtime, kubelet, and kube-proxy.
 
 ### Control Plane
 
@@ -21,10 +22,13 @@ The control plane's components make global decisions about the cluster (for exam
 
 Key components of the control plane include:
 
-- API Server: The API server is the front end for the Kubernetes control plane. It exposes the Kubernetes API and is the entry point for all the administrative tasks in the cluster.
-- etcd: etcd is a consistent and highly available key-value store used as Kubernetes' backing store for all cluster data.
-- Scheduler: The scheduler watches for newly created Pods that have no node assigned and selects a node for them to run on.
-- Controller Manager: The controller manager runs controller processes, which are responsible for regulating the state of the cluster, including node controller, replication controller, endpoints controller, and service account & token controllers.
+- **API Server:** The API server is the front end for the Kubernetes control plane. It exposes the Kubernetes API and is the entry point for all the administrative tasks in the cluster.
+
+- **etcd:** etcd is a consistent and highly available key-value store used as Kubernetes' backing store for all cluster data.
+
+- **Scheduler:** The scheduler watches for newly created Pods that have no node assigned and selects a node for them to run on.
+
+- **Controller Manager:** The controller manager runs controller processes, which are responsible for regulating the state of the cluster, including node controller, replication controller, endpoints controller, and service account & token controllers.
 
 ### Data Plane
 
@@ -32,10 +36,13 @@ The data plane, also known as the runtime plane, consists of nodes that run cont
 
 Key components of the data plane include:
 
-- Node: A node is a worker machine in Kubernetes. Each node contains the services necessary to run pods and is managed by the control plane.
-- Kubelet: The kubelet is an agent that runs on each node in the cluster. It ensures that containers are running in a pod.
-- Container Runtime: The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes: Docker, containerd, CRI-O, and others.
-- Kube-proxy: Kube-proxy is a network proxy that runs on each node in your cluster, maintaining network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
+- **Node:** A node is a worker machine in Kubernetes. Each node contains the services necessary to run pods and is managed by the control plane.
+
+- **Kubelet:** The kubelet is an agent that runs on each node in the cluster. It ensures that containers are running in a pod.
+
+- **Container Runtime:** The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes: Docker, containerd, CRI-O, and others.
+
+- **Kube-proxy:** Kube-proxy is a network proxy that runs on each node in your cluster, maintaining network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
 
 By orchestrating containers across multiple nodes, Kubernetes provides a powerful platform for deploying, scaling, and managing containerized applications, ensuring they run reliably and efficiently.
 
@@ -45,34 +52,25 @@ Pods are the smallest and simplest Kubernetes objects. A Pod represents a single
 
 Key characteristics of Pods include:
 
-- Lifecycle: Pods are ephemeral and do not persist if the node hosting them fails. Kubernetes manages pod lifecycles, restarting or replacing them as necessary.
-- Networking: Each Pod gets its own IP address, which is shared among all the containers within that Pod.
-- Storage: Pods can specify how to access storage resources, such as persistent volumes, which remain available even if the Pod is destroyed and recreated.
+- **Lifecycle:** Pods are ephemeral and do not persist if the node hosting them fails. Kubernetes manages pod lifecycles, restarting or replacing them as necessary.
+
+- **Networking:** Each Pod gets its own IP address, which is shared among all the containers within that Pod.
+
+- **Storage:** Pods can specify how to access storage resources, such as persistent volumes, which remain available even if the Pod is destroyed and recreated.
 
 ## K8s CLI: kubectl
 
 `kubectl` is the command-line interface for interacting with the Kubernetes cluster. It allows users to manage and deploy applications, inspect and manage cluster resources, and view logs.
 
-- **Commands:** [kubernetes.io/docs/reference/kubectl/](https://kubernetes.io/docs/reference/kubectl)
+- **Commands:** [kubernetes.io/docs/reference/kubectl](https://kubernetes.io/docs/reference/kubectl)
 
 ## Persistent Volumes
 
 Persistent Volumes (PVs) are a way to abstract storage in Kubernetes. A PV is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. PVs are independent of the lifecycle of any individual Pod that uses the PV.
 
-Key features include:
-
-- Static and Dynamic Provisioning: Static provisioning allows administrators to create PVs manually. Dynamic provisioning uses Storage Classes to automatically provision storage when a Persistent Volume Claim (PVC) is created.
-- Access Modes: PVs support different access modes, such as ReadWriteOnce (mounted as read-write by a single node), ReadOnlyMany (mounted as read-only by many nodes), and ReadWriteMany (mounted as read-write by many nodes).
-
 ### Persistent Volume Claims
 
 Persistent Volume Claims (PVCs) are requests for storage by a user. A PVC specifies the desired storage capacity and access mode. When a PVC is created, Kubernetes finds a matching PV (if one exists) and binds them together. If no suitable PV exists, and dynamic provisioning is enabled, a new PV is automatically provisioned.
-
-Key concepts include:
-
-- Binding: The process of associating a PVC with a PV.
-- Resizing: PVCs can be resized to request more storage.
-- Storage Classes: Allow administrators to define different classes of storage, which can be used by PVCs to automatically provision storage with specific properties.
 
 ## Labels and Selectors
 
@@ -80,10 +78,9 @@ Labels are key-value pairs that are attached to Kubernetes objects, such as Pods
 
 Selectors allow users to filter Kubernetes objects based on labels. There are two types of selectors:
 
-- Equality-based Selectors: Allow matching objects that have a specific label or set of labels. For example, `environment=production`.
-- Set-based Selectors: Allow matching objects based on a set of values. For example, `environment in (production, development)`.
+- **Equality-based Selectors:** Allow matching objects that have a specific label or set of labels. For example, `environment=production`.
 
-Labels and selectors are powerful tools for managing and organizing resources within a Kubernetes cluster. They enable sophisticated queries and operations, such as selecting all Pods running in a specific environment or with a specific version of an application.
+- **Set-based Selectors:** Allow matching objects based on a set of values. For example, `environment in (production, development)`.
 
 ## K8s Objects
 
@@ -93,82 +90,33 @@ Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes 
 
 A Replica Set ensures that a specified number of pod replicas are running at any given time. It is a mechanism to maintain a stable set of replica Pods running at any given time, which can be scaled up or down.
 
-Key features include:
-
-- Replication: Ensures a specified number of replicas are running.
-- Self-Healing: Replaces failed pods to maintain the desired number of replicas.
-- Selection: Uses selectors to identify which pods it should manage.
-
 ### Deployments
 
 A Deployment provides declarative updates for Pods and Replica Sets. You describe a desired state in a Deployment object, and the Deployment Controller changes the actual state to the desired state at a controlled rate.
-
-Key features include:
-
-- Rolling Updates: Gradually replaces old versions of Pods with new ones.
-- Rollback: Reverts back to an older Deployment revision if necessary.
-- Scaling: Adjusts the number of replicas.
-- Self-Healing: Automatically replaces failed or unresponsive Pods.
 
 ### Stateful Sets
 
 Stateful Sets manage the deployment and scaling of a set of Pods, and provide guarantees about the ordering and uniqueness of these Pods. Stateful Sets are used for stateful applications, which require persistent storage and stable network identities.
 
-Key features include:
-
-- Stable, Unique Pod Identifiers: Each Pod gets a stable hostname, which does not change across reschedules.
-- Ordered, Graceful Deployment and Scaling: Ensures Pods are started and stopped in a specific order.
-- Persistent Storage: Each Pod in a Stateful Set has its own persistent storage, created from a Persistent Volume Claim (PVC).
-
 ### Horizontal Pod Autoscalers
 
 Horizontal Pod Autoscalers automatically scale the number of Pods in a Deployment, Replica Set, or Stateful Set based on observed CPU utilization or other select metrics.
-
-Key features include:
-
-- Automatic Scaling: Adjusts the number of replicas based on metrics like CPU or custom metrics.
-- Custom Metrics: Can use application-specific metrics for scaling decisions.
 
 ### Services
 
 A Service in Kubernetes is an abstraction which defines a logical set of Pods and a policy by which to access them, sometimes called a microservice. Services enable loose coupling between dependent Pods.
 
-Key features include:
-
-- Stable IP Address and DNS Name: Provides a consistent network endpoint.
-- Load Balancing: Distributes traffic across a set of Pods.
-- Service Types: Includes ClusterIP (default, internal cluster use), NodePort (exposes the service on each Node’s IP), LoadBalancer (uses an external load balancer), and ExternalName (maps a service to an external DNS name).
-
 ### Ingresses
 
 An Ingress is an API object that manages external access to the services in a cluster, typically HTTP. Ingress can provide load balancing, SSL termination, and name-based virtual hosting.
-
-Key features include:
-
-- URL Routing: Routes traffic to services based on URL paths.
-- TLS/SSL Termination: Handles HTTPS traffic and provides secure connections.
-- Virtual Hosting: Supports multiple hostnames for a single ingress controller.
-
-Kubernetes objects provide powerful tools for managing applications at scale, ensuring high availability, and automating many tasks associated with deployment and management.
 
 ## Persistent Volumes (PVs)
 
 Persistent Volumes (PVs) are a way to abstract storage in Kubernetes. A PV is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. PVs are independent of the lifecycle of any individual Pod that uses the PV.
 
-Key features include:
-
-- Static and Dynamic Provisioning: Static provisioning allows administrators to create PVs manually. Dynamic provisioning uses Storage Classes to automatically provision storage when a Persistent Volume Claim (PVC) is created.
-- Access Modes: PVs support different access modes, such as ReadWriteOnce (mounted as read-write by a single node), ReadOnlyMany (mounted as read-only by many nodes), and ReadWriteMany (mounted as read-write by many nodes).
-
 ### Persistent Volume Claims (PVCs)
 
 Persistent Volume Claims (PVCs) are requests for storage by a user. A PVC specifies the desired storage capacity and access mode. When a PVC is created, Kubernetes finds a matching PV (if one exists) and binds them together. If no suitable PV exists, and dynamic provisioning is enabled, a new PV is automatically provisioned.
-
-Key concepts include:
-
-- Binding: The process of associating a PVC with a PV.
-- Resizing: PVCs can be resized to request more storage.
-- Storage Classes: Allow administrators to define different classes of storage, which can be used by PVCs to automatically provision storage with specific properties.
 
 ## K8s Manifests
 
@@ -176,126 +124,126 @@ Kubernetes resources are usually defined in manifest files. These files are writ
 
 ### Pod Manifest
 
-```yml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+    name: my-pod
 spec:
   containers:
   - name: my-container
-    image: nginx
-    ports:
-    - containerPort: 80
+      image: nginx
+      ports:
+      - containerPort: 80
 ```
 
 ### ReplicaSet Manifest
 
-```yml
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: my-replicaset
+    name: my-replicaset
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
+    replicas: 3
+    selector:
+        matchLabels:
         app: my-app
-    spec:
-      containers:
-      - name: my-container
-        image: nginx
-        ports:
-        - containerPort: 80
+    template:
+        metadata:
+            labels:
+                app: my-app
+        spec:
+          containers:
+          - name: my-container
+              image: nginx
+              ports:
+              - containerPort: 80
 ```
 
 ### Deployment Manifest
 
-```yml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+    name: my-deployment
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
-        app: my-app
-    spec:
-      containers:
-      - name: my-container
-        image: nginx
-        ports:
-        - containerPort: 80
+    replicas: 3
+    selector:
+        matchLabels:
+            app: my-app
+    template:
+        metadata:
+            labels:
+                app: my-app
+      spec:
+          containers:
+          - name: my-container
+              image: nginx
+              ports:
+              - containerPort: 80
 ```
 
 ### HorizontalPodAutoscaler Manifest
 
-```yml
+```yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: my-hpa
+    name: my-hpa
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-deployment
-  minReplicas: 1
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 80
+    scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: my-deployment
+    minReplicas: 1
+    maxReplicas: 10
+    metrics:
+    - type: Resource
+        resource:
+            name: cpu
+            target:
+                type: Utilization
+                averageUtilization: 80
 ```
 
 ### Service Manifest
 
-```yml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+    name: my-service
 spec:
-  selector:
-    app: my-app
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: ClusterIP
+    selector:
+        app: my-app
+    ports:
+    - protocol: TCP
+        port: 80
+        targetPort: 80
+    type: ClusterIP
 ```
 
 ### Ingress Manifest
 
-```yml
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress
+    name: my-ingress
 spec:
-  rules:
-  - host: my-app.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: my-service
-            port:
-              number: 80
+    rules:
+    - host: my-app.example.com
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: my-service
+              port:
+                number: 80
 ```
 
 ### PersistentVolume Manifest
@@ -304,30 +252,30 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv
+    name: my-pv
 spec:
   capacity:
-    storage: 10Gi
+      storage: 10Gi
   accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: my-storage-class
   hostPath:
-    path: "/mnt/data"
+      path: "/mnt/data"
 ```
 
 ### PersistentVolumeClaim Manifest
 
-```yml
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc
+    name: my-pvc
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: my-storage-class
+    accessModes:
+        - ReadWriteOnce
+    resources:
+        requests:
+            storage: 10Gi
+    storageClassName: my-storage-class
 ```
