@@ -14,6 +14,43 @@ A Dockerfile is a text file that contains a series of instructions for building 
 
 - **Commands:** [docs.docker.com/reference/dockerfile](https://docs.docker.com/reference/dockerfile)
 
+#### Exercise
+
+1. Write a Dockerfile to create an image for a simple Node.js application:
+
+```Dockerfile
+# Use an official Node.js runtime as a parent image
+FROM node:14
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the application
+CMD ["node", "app.js"]
+```
+
+2. Build and run:
+
+```sh
+# Build the Docker image
+docker build -t my-node-app .
+
+# Run the Docker container
+docker run -p 8080:8080 my-node-app
+```
+
 ### Images
 
 A Docker image is a lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, environment variables, and configuration files. Images are built from a series of layers, with each layer representing a set of file changes or commands.
