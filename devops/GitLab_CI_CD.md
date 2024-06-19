@@ -68,3 +68,34 @@ The GitLab Container Registry is an integrated Docker container registry that al
 ## Package Registry
 
 Similar to the Container Registry, GitLab’s Package Registry allows users to build, publish, and share packages, such as npm or Maven packages, alongside their source code and CI/CD pipelines. It provides a private, secure space within a GitLab project to manage dependencies.
+
+## Exercises
+
+1. Clone a repository:
+
+```bash
+git clone https://gitlab.com/username/repository.git
+```
+
+2. Create a new branch and push changes:
+
+```bash
+# Create a new branch
+git checkout -b new-feature
+
+# Commit and push all changes
+git add .
+git commit -m "Add new feature"
+git push
+```
+
+3. Merge branches:
+
+```bash
+# Checkout to main
+git checkout main
+
+# Merge and push all changes
+git merge new-feature
+git push
+```
