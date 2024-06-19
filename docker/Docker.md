@@ -53,3 +53,40 @@ Docker Compose is a tool for defining and running multi-container Docker applica
 ## Volumes
 
 Docker volumes are used to persist data generated and used by Docker containers. Volumes are stored in a part of the host filesystem managed by Docker (`/var/lib/docker/volumes/` on Linux) and are not tied to the lifecycle of a particular container.
+
+## Exercises
+
+1. Write a Dockerfile to create an image for a simple Node.js application:
+
+```Dockerfile
+# Use an official Node.js runtime as a parent image
+FROM node:14
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the application
+CMD ["node", "app.js"]
+```
+
+2. Build and run:
+
+```sh
+# Build the Docker image
+docker build -t my-node-app .
+
+# Run the Docker container
+docker run -p 8080:8080 my-node-app
+```
