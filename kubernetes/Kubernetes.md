@@ -279,3 +279,44 @@ spec:
             storage: 10Gi
     storageClassName: my-storage-class
 ```
+
+## Exercises
+
+1. Write a Kubernetes manifest file to create a Pod running a Nginx container.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: nginx-pod
+spec:
+    containers:
+        - name: nginx
+            image: nginx:latest
+            ports:
+            - containerPort: 80
+```
+
+2. Write a Kubernetes deployment manifest to manage a set of replicas of the Nginx Pod.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: nginx-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+        app: nginx
+    template:
+        metadata:
+        labels:
+            app: nginx
+        spec:
+        containers:
+        - name: nginx
+            image: nginx:latest
+            ports:
+            - containerPort: 80
+```
