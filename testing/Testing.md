@@ -15,6 +15,7 @@ Validation is the process of evaluating the final product to determine whether i
 ### Stages
 
 - **Release Testing:** This stage involves testing a software release candidate in a production-like environment to ensure it is ready for deployment. It typically includes a comprehensive set of tests that cover various aspects of the software to detect any issues that might have been missed during earlier testing phases.
+
 - **User Testing:** Also known as beta testing or field testing, user testing involves real users testing the software in their own environment. This stage provides valuable feedback on the software’s usability, functionality, and performance from an end-user perspective.
 
 ## Testing Pyramid
@@ -38,9 +39,13 @@ Automated testing involves using software tools to execute tests automatically, 
 Testing doubles are objects that mimic the behavior of real components in testing environments. They are used to isolate the component under test and can take various forms:
 
 - **Stubs:** Provide predefined responses to function calls made during the test.
+
 - **Mocks:** Verify that certain methods were called on the object.
+
 - **Fakes:** Have working implementations but are simplified versions.
+
 - **Spies:** Record information about the interactions with the object.
+
 - **Dummies:** Passed around but never actually used, usually to fill parameter lists.
 
 ### Contract Testing
