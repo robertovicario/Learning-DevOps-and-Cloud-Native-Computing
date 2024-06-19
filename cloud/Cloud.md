@@ -97,6 +97,7 @@ Benefits:
 - **Cost Savings:** Reduced infrastructure costs and operational expenses.
 
 - **Disaster Recovery:** Robust disaster recovery and business continuity capabilities.
+
 - **Innovation:** Access to advanced technologies and services.
 
 Drawbacks:

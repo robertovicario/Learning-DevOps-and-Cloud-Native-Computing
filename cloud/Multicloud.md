@@ -52,13 +52,8 @@ resource "aws_instance" "example" {
 ```
 
 2. **Initialize the directory:** Run `terraform init` to initialize your configuration directory. This command downloads the necessary provider plugins.
-
 3. **Format and validate configuration:** Use `terraform fmt` to format your configuration files and `terraform validate` to ensure the configuration is syntactically valid and internally consistent.
-
 4. **Generate and review execution plan:** Run `terraform plan` to create an execution plan. This step shows what actions Terraform will take to achieve the desired state.
-
 5. **Apply changes:** Apply the changes required to reach the desired state using `terraform apply`. This command will prompt for confirmation before making any changes.
-
 6. **Inspect state:** Check the current state of your infrastructure with `terraform show` or `terraform state` commands.
-
 7. **Destroy infrastructure:** Use `terraform destroy` to remove all the infrastructure resources defined in your configuration.
