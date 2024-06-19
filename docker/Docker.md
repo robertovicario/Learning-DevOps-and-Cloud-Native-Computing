@@ -27,7 +27,9 @@ A Docker container is a runnable instance of a Docker image. Containers are isol
 Docker Engine is the core component of Docker, responsible for running and managing Docker containers. It consists of three main parts:
 
 - **Server (dockerd):** A daemon that manages Docker objects (images, containers, networks, volumes) and listens for API requests.
+
 - **REST API:** An interface for interacting with the Docker daemon programmatically.
+
 - **Client (docker):** A command-line tool for interacting with the Docker daemon.
 
 ### Architecture
@@ -35,8 +37,11 @@ Docker Engine is the core component of Docker, responsible for running and manag
 Docker's architecture is based on a client-server model. The key components include:
 
 - **Docker Client:** The primary interface for users to interact with Docker. Commands issued through the Docker Client are sent to the Docker daemon, which carries them out.
+
 - **Docker Daemon:** The background service running on the host machine. It manages Docker objects, such as images, containers, networks, and volumes.
+
 - **Docker Registry:** A centralized repository for storing and distributing Docker images. Public registries like Docker Hub are available, as well as private registries for proprietary images.
+
 - **Docker Objects:** These include images, containers, networks, and volumes, which are created and managed by the Docker daemon.
 
 ## Docker Compose
